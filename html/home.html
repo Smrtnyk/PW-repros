@@ -23,5 +23,17 @@
         Object.keys(blockingMap).forEach(event => {
             addEventListener(event, block, true);
         });
+
+
+        window.getLargestINP = function getLargestINP(page) {
+            return new Promise((resolve) => {
+                const po = new PerformanceObserver((entryList) => {
+                    const entries = entryList.getEntries().sort((a, b) => a.duration - b.duration);
+                    resolve(entries[entries.length - 1]);
+                });
+
+                po.observe({ buffered: true, type: "event", durationThreshold: 40 })
+            });
+        }
     </script>
 </body>

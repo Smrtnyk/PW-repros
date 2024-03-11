@@ -1,4 +1,4 @@
-import type { Fixtures } from "@playwright/test";
+import {Fixtures, Page} from "@playwright/test";
 import { test as base } from "@playwright/test";
 import { Server } from "./server.js";
 
@@ -17,10 +17,11 @@ const serverFixtures: Fixtures<ServerFixtures, ServerWorkerOptions> = {
 
         return serverInstance.stop();
     }, { scope: "worker" }],
-    server: async ({ serverManager }, run) => {
+    server: async ({ serverManager }, run, testInfo) => {
         serverManager.server.reset();
         await serverManager.server.init();
         await run(serverManager.server);
+       throw new Error("foo");
     }
 };
 
