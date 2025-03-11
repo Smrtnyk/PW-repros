@@ -10,7 +10,6 @@ export const stableConfig: PlaywrightTestConfig = {
     testMatch: "**/*.spec.ts",
     quiet: false,
     preserveOutput: "failures-only",
-    retries: 3,
     projects: [
         {
             name: "chromium",
