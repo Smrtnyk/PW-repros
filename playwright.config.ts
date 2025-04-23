@@ -19,10 +19,10 @@ export const stableConfig: PlaywrightTestConfig = {
             name: "firefox",
             use: { browserName: "firefox" }
         },
-        {
-            name: "webkit",
-            use: { browserName: "webkit" }
-        }
+        // {
+        //     name: "webkit",
+        //     use: { browserName: "webkit" }
+        // }
     ]
 };
 

@@ -21,7 +21,6 @@ const serverFixtures: Fixtures<ServerFixtures, ServerWorkerOptions> = {
         serverManager.server.reset();
         await serverManager.server.init();
         await run(serverManager.server);
-       throw new Error("foo");
     }
 };
 
