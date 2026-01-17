@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 
 test.describe("Navigation API route change detection", () => {
-  test("detects route changes using Navigation API or History API fallback", async ({ page }) => {
+  test("detects route changes using Navigation API", async ({ page }) => {
     const htmlContent = `
       <!DOCTYPE html>
       <html>
