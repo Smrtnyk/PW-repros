@@ -1,0 +1,9 @@
+services:
+  tests:
+    build:
+      context: .
+    init: true
+    ipc: host
+    extra_hosts:
+      - "first-party.test=127.0.0.1"
+      - "third-party.test=127.0.0.1"

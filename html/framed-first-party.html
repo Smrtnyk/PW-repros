@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>First-party destination page</title>
+</head>
+<body>
+    <h1>First-party destination page</h1>
+    <p>
+        Top-frame stored value:
+        <output data-testid="top-frame-stored-value"></output>
+    </p>
+
+    <iframe id="third-party-frame" title="Third-party frame"></iframe>
+
+    <script>
+        const storedValue = sessionStorage.getItem("written-before-first-page-load");
+        document.querySelector("[data-testid='top-frame-stored-value']").textContent = storedValue ?? "<missing>";
+
+        const thirdPartyFrameURL = new URL(window.location.href);
+        thirdPartyFrameURL.hostname = "third-party.test";
+        thirdPartyFrameURL.pathname = "/third-party-frame.html";
+        document.querySelector("#third-party-frame").src = thirdPartyFrameURL.href;
+    </script>
+</body>
+</html>

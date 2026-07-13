@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>First-party page</title>
+</head>
+<body>
+    <h1>First-party page</h1>
+    <a id="third-party-link">Go to third-party page</a>
+
+    <script>
+        const thirdPartyURL = new URL(window.location.href);
+        thirdPartyURL.hostname = "third-party.test";
+        thirdPartyURL.pathname = "/third-party.html";
+        document.querySelector("#third-party-link").href = thirdPartyURL.href;
+
+        window.addEventListener("pagehide", () => {
+            sessionStorage.setItem("written-during-pagehide", "first-party-page-was-hidden");
+        }, { once: true });
+    </script>
+</body>
+</html>

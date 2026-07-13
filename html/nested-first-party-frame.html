@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Nested first-party frame</title>
+</head>
+<body>
+    <h1>Nested first-party frame</h1>
+    <p>
+        Nested-frame stored value:
+        <output data-testid="nested-frame-stored-value"></output>
+    </p>
+
+    <script>
+        const storedValue = sessionStorage.getItem("written-before-first-page-load");
+        document.querySelector("[data-testid='nested-frame-stored-value']").textContent = storedValue ?? "<missing>";
+    </script>
+</body>
+</html>

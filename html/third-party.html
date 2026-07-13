@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Third-party page</title>
+</head>
+<body>
+    <h1>Third-party page</h1>
+
+    <script>
+        const returnURL = new URL(window.location.href);
+        returnURL.hostname = "first-party.test";
+        returnURL.pathname = "/return.html";
+
+        window.addEventListener("load", () => {
+            window.setTimeout(() => {
+                window.location.href = returnURL.href;
+            }, 20);
+        }, { once: true });
+    </script>
+</body>
+</html>

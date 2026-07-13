@@ -72,6 +72,16 @@ export class Server {
     }
 
     async #serveHTML(req: Request, res: Response, next): Promise<void> {
+        if (req.path === "/slow-resource.css") {
+            const timeout = setTimeout(() => {
+                if (!res.destroyed) {
+                    res.type("text/css").send("/* Deliberately empty. */");
+                }
+            }, 1000);
+            res.once("close", () => clearTimeout(timeout));
+            return;
+        }
+
         if (req.path.endsWith(".html")) {
             const filePath = path.join(__dirname, "..", "html", req.path);
             const fileContent = await readFile(filePath, "utf8");

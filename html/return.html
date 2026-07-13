@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>First-party return page</title>
+</head>
+<body>
+    <h1>First-party return page</h1>
+    <p>
+        Stored value:
+        <output data-testid="stored-value"></output>
+    </p>
+
+    <script>
+        const storedValue = sessionStorage.getItem("written-during-pagehide");
+        document.querySelector("[data-testid='stored-value']").textContent = storedValue ?? "<missing>";
+    </script>
+</body>
+</html>

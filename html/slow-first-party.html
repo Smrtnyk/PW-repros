@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Slow first-party page</title>
+
+    <script>
+        const slowStylesheet = document.createElement("link");
+        slowStylesheet.rel = "stylesheet";
+        slowStylesheet.href = "/slow-resource.css";
+        document.head.append(slowStylesheet);
+
+        window.addEventListener("pagehide", () => {
+            sessionStorage.setItem("written-before-first-page-load", "slow-first-party-page-was-hidden");
+        }, { once: true });
+
+        window.setTimeout(() => {
+            window.location.href = "/framed-first-party.html";
+        }, 20);
+    </script>
+</head>
+<body>
+    <h1>Slow first-party page</h1>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Third-party frame</title>
+</head>
+<body>
+    <h1>Third-party frame</h1>
+    <iframe id="nested-first-party-frame" title="Nested first-party frame"></iframe>
+
+    <script>
+        const nestedFirstPartyFrameURL = new URL(window.location.href);
+        nestedFirstPartyFrameURL.hostname = "first-party.test";
+        nestedFirstPartyFrameURL.pathname = "/nested-first-party-frame.html";
+        document.querySelector("#nested-first-party-frame").src = nestedFirstPartyFrameURL.href;
+    </script>
+</body>
+</html>
